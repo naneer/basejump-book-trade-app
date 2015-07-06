@@ -7,6 +7,7 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
+  username: { type: String },
   email: { type: String, lowercase: true },
   role: {
     type: String,
@@ -56,6 +57,14 @@ UserSchema
 /**
  * Validations
  */
+ 
+// Validate empty username
+UserSchema
+  .path('username')
+  .validate(function(username){
+    if (authTypes.indexOf(this.provider) !== -1) return true;
+    return username.length;
+  }, 'Username cannot be blank');
 
 // Validate empty email
 UserSchema
@@ -72,6 +81,21 @@ UserSchema
     if (authTypes.indexOf(this.provider) !== -1) return true;
     return hashedPassword.length;
   }, 'Password cannot be blank');
+
+// Validate username is not taken
+UserSchema
+  .path('username')
+  .validate(function(value, respond){
+    var self = this;
+    this.constructor.findOne({username: value}, function(err, user) {
+      if(err) throw err;
+      if(user){
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+  }, 'The specified username is already in use.');
 
 // Validate email is not taken
 UserSchema
