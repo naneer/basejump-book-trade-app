@@ -3,6 +3,8 @@
 angular.module('workspaceApp')
   .controller('NavbarCtrl',[ '$scope', '$location', 'Auth', function ($scope, $location, Auth) {
     $scope.menu = [{
+      title: 'Browse',
+      link: '/stacks'
     }];
 
     $scope.isCollapsed = true;

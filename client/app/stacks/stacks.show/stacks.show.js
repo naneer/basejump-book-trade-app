@@ -1,0 +1,11 @@
+'use strict';
+
+angular.module('workspaceApp')
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('stacks.show', {
+        url: '/:username',
+        templateUrl: 'app/stacks/stacks.show/stacks.show.html',
+        controller: 'StacksShowCtrl'
+      });
+  });
