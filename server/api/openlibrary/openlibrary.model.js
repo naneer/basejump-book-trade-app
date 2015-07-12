@@ -16,13 +16,13 @@ function OpenLibrary(){
 
             
              if(book.hasOwnProperty("subtitle")){
-               copy.subtitle = book.subtitle; 
+               copy.title += ": " + book.subtitle; 
              }
              
              if(book.hasOwnProperty("cover_i")){
-               copy.cover = "http://covers.openlibrary.org/b/id/" + book.cover_i + "-M.jpg";
+               copy.cover = "https://covers.openlibrary.org/b/id/" + book.cover_i + "-L.jpg";
              } else if (book.hasOwnProperty("cover_edition_key")){
-               copy.cover = "http://covers.openlibrary.org/b/olid/" + book.cover_edition_key + "-M.jpg";
+               copy.cover = "https://covers.openlibrary.org/b/olid/" + book.cover_edition_key + "-L.jpg";
              }
             
              copy.authorlist = book.author_name;            

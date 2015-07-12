@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('StacksShowCtrl', [ '$http', function ($http) {
+  .controller('StacksShowCtrl', [ 'myBooks', function (myBooks) {
     var ctrl = this;
-
+    ctrl.books = myBooks;
   }]);

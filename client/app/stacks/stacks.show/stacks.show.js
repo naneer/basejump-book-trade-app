@@ -6,6 +6,15 @@ angular.module('workspaceApp')
       .state('stacks.show', {
         url: '/:username',
         templateUrl: 'app/stacks/stacks.show/stacks.show.html',
-        controller: 'StacksShowCtrl'
+        controller: 'StacksShowCtrl',
+        controllerAs: 'ctrl',
+        resolve: {
+          myBooks: [
+            'Book',
+            function(Book){
+              return Book.mybooks().$promise;
+            }
+          ]
+        }
       });
   });

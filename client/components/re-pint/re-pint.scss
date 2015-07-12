@@ -1,0 +1,25 @@
+.thumbnail {
+    margin: 0;
+}
+
+.grid-sizer {
+    width: 20%;
+}
+
+.grid-item {
+    width: 20%;
+    padding: .6%;
+}
+
+.grid {
+
+}
+
+img.bookimg {
+    filter: brightness(100%);
+    transition: .5s filter linear;
+}
+
+img.bookimg:hover {
+    filter: brightness(88%);
+}

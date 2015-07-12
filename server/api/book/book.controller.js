@@ -11,6 +11,16 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of logged in User books
+exports.mybooks = function(req, res) {
+  var query = {};
+  query.user_id = req.user._id;
+  Book.find(query, function (err, books) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, books);
+  });
+};
+
 // Get a single book
 exports.show = function(req, res) {
   Book.findById(req.params.id, function (err, book) {
@@ -22,6 +32,7 @@ exports.show = function(req, res) {
 
 // Creates a new book in the DB.
 exports.create = function(req, res) {
+  req.body.user_id = req.user._id;
   Book.create(req.body, function(err, book) {
     if(err) { return handleError(res, err); }
     return res.json(201, book);

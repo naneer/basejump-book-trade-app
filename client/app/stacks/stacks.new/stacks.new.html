@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
       <div class="col-xs-12">
-          <h3>Add a Book <small>search provided by <a href="http://openlibrary.org">OpenLibrary.org</a></small></h3>
+          <h3>Add a Book <small>search provided by <a href="http://openlibrary.org" target="_blank">OpenLibrary.org</a></small></h3>
       </div>
   </div>
   <div class="row ol-search">
@@ -18,9 +18,5 @@
     </form>
     </div>
   </div>
-  <div class="row">
-      <div class="col-xs-12">
-          {{ ctrl.data }}
-      </div>
-  </div>
+  <re-pint books="ctrl.books"></re-pint>
 </div>

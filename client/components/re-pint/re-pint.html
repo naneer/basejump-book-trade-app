@@ -1,0 +1,13 @@
+<div class="grid">
+    <div class="grid-sizer"></div>
+    <div class="grid-item hidden" ng-repeat="book in pint.books">
+        <div class="thumbnail">
+            <a href="" ng-click="pint.open(book, $event)">
+                <img class="bookimg" ng-src="{{ book.cover }}" />
+            </a>
+            <div class="hidden-xs caption">
+                <h4>{{ book.title }}</h4>
+            </div>            
+        </div>
+    </div>
+</div>
