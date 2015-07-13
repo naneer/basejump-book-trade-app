@@ -7,6 +7,14 @@ angular.module('workspaceApp')
         url: '',
         templateUrl: 'app/stacks/stacks.all/stacks.all.html',
         controller: 'StacksAllCtrl',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrl',
+        resolve: {
+          stack: [
+            'Book',
+            function(Book){
+              return Book.query().$promise;
+            }
+          ]
+        }
       });
   });

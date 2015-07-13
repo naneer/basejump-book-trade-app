@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .directive('rePint', [ '$modal', function ($modal) {
+  .directive('rePint', [ '$modal', 'Auth', '$state', function ($modal, Auth, $state) {
     return {
       templateUrl: 'components/re-pint/re-pint.html',
       restrict: 'E',
@@ -13,7 +13,8 @@ angular.module('workspaceApp')
         books: '='
       },
       link: function (scope, element, attrs, pint) {
-        
+        pint.currentUserId = Auth.getCurrentUser()._id;
+        pint.state = $state.$current.name;
         var grid = element[0];
         var msnry = new Masonry( grid, {
           columnWidth: '.grid-sizer',
@@ -51,6 +52,7 @@ angular.module('workspaceApp')
             }
           });          
         };
+
       }
     };
   }]);

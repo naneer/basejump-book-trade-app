@@ -7,6 +7,10 @@
             </a>
             <div class="hidden-xs caption">
                 <h4>{{ book.title }}</h4>
+                <div ng-if="pint.state === 'stacks.all'">
+                    <h5 ng-if="book._owner._id !== pint.currentUserId">{{ book._owner.username }}'s copy</h5>
+                    <h5 ng-if="book._owner._id === pint.currentUserId">your copy</h5>
+                </div>
             </div>            
         </div>
     </div>

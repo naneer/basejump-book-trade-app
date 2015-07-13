@@ -1,0 +1,20 @@
+<div>
+        <div class="modal-header">
+            <h3 class="modal-title">Choose a book to trade with</h3>
+        </div>
+        <div class="modal-body">
+            <div class="media" ng-repeat="book in tradectrl.mybooks">
+                <div class="pull-left">
+                    <img class="media-object" ng-src="{{ book.cover_small }}" />
+                </div>
+                <div class="media-body">
+                    <h4>{{ book.title }}</h4>
+                    <span ng-if="book.authorlist">by {{ book.authorlist.join(", ") }}</span>                    
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</div>

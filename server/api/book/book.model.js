@@ -6,9 +6,10 @@ var mongoose = require('mongoose'),
 var BookSchema = new Schema({
   title: String,
   cover: String,
+  cover_small: String,
   authorlist: Array,
   ol_key: String,
-  user_id: String
+  _owner: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 module.exports = mongoose.model('Book', BookSchema);

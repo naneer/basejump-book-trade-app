@@ -1,13 +1,17 @@
 <div>
     <div class="modal-header" ng-if="modalctrl.add">
-        <button ng-if="modalctrl.stacked === 0" class="btn btn-primary" ng-click="modalctrl.add()"><i class="fa fa-plus"></i> Stack It</button>
-        <button disabled ng-if="modalctrl.stacked === 1" class="btn btn-primary"><i class="fa fa-circle-o-notch fa-spin"></i> Stacking</button>
-        <button disabled ng-if="modalctrl.stacked === 2" class="btn btn-primary"><i class="fa fa-check"></i> Stacked!</button>
+        <button type="button" ng-if="modalctrl.stacked === 0" class="btn btn-primary" ng-click="modalctrl.add()"><i class="fa fa-plus"></i> Stack It</button>
+        <button type="button" disabled ng-if="modalctrl.stacked === 1" class="btn btn-primary"><i class="fa fa-circle-o-notch fa-spin"></i> Stacking</button>
+        <button type="button" disabled ng-if="modalctrl.stacked === 2" class="btn btn-primary"><i class="fa fa-check"></i> Stacked!</button>
     </div>
     <div class="modal-header" ng-if="modalctrl.delete">
-        <button ng-if="modalctrl.stacked === 0" class="btn btn-danger" ng-click="modalctrl.delete()"><i class="fa fa-minus"></i> Remove</button>
-        <button disabled ng-if="modalctrl.stacked === 1" class="btn btn-danger"><i class="fa fa-circle-o-notch fa-spin"></i> Removing</button>
-        <button disabled ng-if="modalctrl.stacked === 2" class="btn btn-danger"><i class="fa fa-check"></i> Removed!</button>
+        <button type="button" ng-if="modalctrl.stacked === 0" class="btn btn-danger" ng-click="modalctrl.delete()"><i class="fa fa-minus"></i> Remove</button>
+        <button type="button" disabled ng-if="modalctrl.stacked === 1" class="btn btn-danger"><i class="fa fa-circle-o-notch fa-spin"></i> Removing</button>
+        <button type="button" disabled ng-if="modalctrl.stacked === 2" class="btn btn-danger"><i class="fa fa-check"></i> Removed!</button>
+    </div>
+    <div class="modal-header" ng-if="modalctrl.requestTrade">
+        <button type="button" class="btn btn-info" ng-click="modalctrl.requestTrade()"><i class="fa fa-share"></i> Request A Trade</button>
+        <h5>{{ modalctrl.book._owner.username }}'s copy</h5>
     </div>
     <div class="modal-body">
         <img ng-src="{{ modalctrl.book.cover }}" />           
