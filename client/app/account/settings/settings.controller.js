@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth) {
+  .controller('SettingsCtrl', [ '$scope', 'User', 'Auth', function ($scope, User, Auth) {
     $scope.errors = {};
 
+    $scope.currentCity = Auth.getCurrentUser().city;
+    $scope.currentState = Auth.getCurrentUser().state;
+    
     $scope.changePassword = function(form) {
       $scope.submitted = true;
       if(form.$valid) {
@@ -18,4 +21,19 @@ angular.module('workspaceApp')
         });
       }
 		};
-  });
+		
+		$scope.updateInfo = function(form){
+		  if(form.$valid){
+		    User.update({ id: Auth.getCurrentUser()._id }, { 
+		      city: $scope.newCity,
+		      state: $scope.newState
+		    }, function(user){
+		      $scope.settingsmessage = 'City and State successfully changed.';
+		      $scope.currentCity = $scope.newCity;
+		      $scope.currentState = $scope.newState;
+		    }, function(err){
+		      $scope.settingsmessage = err;
+		    });
+		  }
+		}
+  }]);

@@ -10,21 +10,22 @@ var User = require('../api/user/user.model');
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
-    username: 'erudite',
-    firstname: 'Test',
+    city: 'Los Angeles',
+    state: 'California',
+    name: 'erudite',
     lastname: 'User',
     email: 'test@test.com',
     password: 'test'
   }, {
     provider: 'local',
-    username: 'dauntless',
+    name: 'dauntless',
     firstname: 'Daunt',
     lastname: 'Less',
     email: 'daunt@test.com',
     password: 'test'
   }, {
     provider: 'local',
-    username: 'admin',
+    name: 'admin',
     role: 'admin',
     firstname: 'Admin',
     email: 'admin@admin.com',

@@ -17,6 +17,9 @@ angular.module('workspaceApp')
         params: {
           id:'me'
         }
+      },
+      update: {
+        method: 'PUT'
       }
 	  });
   });
