@@ -16,7 +16,7 @@ exports.myrequests = function(req, res) {
   Trade.find({ _fromuser: req.user._id })
       .sort('-created_at')
       .limit(10)
-      .populate('_touser', 'username')
+      .populate('_touser', 'name')
       .populate('_to_book _from_book')
       .exec(function (err, requests) {
         if(err) { return handleError(res, err); }
@@ -29,7 +29,7 @@ exports.myoffers = function(req, res) {
   Trade.find({ _touser: req.user._id })
        .sort('-created_at')
        .limit(5)
-       .populate('_fromuser', 'username')
+       .populate('_fromuser', 'name')
        .populate('_to_book _from_book')
        .exec(function (err, offers) {
          if(err) { return handleError(res, err); }

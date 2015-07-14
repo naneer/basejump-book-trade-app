@@ -24,7 +24,7 @@ angular.module('workspaceApp')
           if(n === undefined) { return; }
 
           msnry.layout();
-          var imgLd = imagesLoaded(grid);
+          var imgLd = imagesLoaded(grid.getElementsByClassName('hidden'));
           imgLd.on('progress', function(instance, image){
             var item = $(image.img).parents('.grid-item');
             item.removeClass('hidden');

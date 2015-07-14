@@ -10,7 +10,7 @@
         <div class="col-xs-12">
             <div class="list-group">
                 <div class="list-group-item" ng-repeat="offer in ctrl.offers">
-                    {{ offer._fromuser.username }} wants to trade you for 
+                    {{ offer._fromuser.name }} wants to trade you for 
                     <img class="align-bottom" ng-src="{{ offer._to_book.cover_small }}" /> with 
                     <img class="align-bottom" ng-src="{{ offer._from_book.cover_small }}"/>
                     <div class="pull-right" ng-if="offer.active">
@@ -34,7 +34,7 @@
         <div class="col-xs-12">
             <div class="list-group">
                 <div class="list-group-item" ng-if="request.active" ng-repeat="request in ctrl.requests">
-                    You want to trade with {{ request._touser.username }}, for 
+                    You want to trade with {{ request._touser.name }}, for 
                     <img class="align-bottom" ng-src="{{ request._to_book.cover_small }}" /> with 
                     <img class="align-bottom" ng-src="{{ request._from_book.cover_small }}"/>   
                     <button type="button" class="pull-right btn btn-warning btn-sm" ng-click="ctrl.cancel(request, $index, $event)">Cancel</button>
@@ -51,7 +51,7 @@
         <div class="col-xs-12">
             <div class="list-group">
                 <div class="list-group-item" ng-if="!request.active && request.accepted" ng-repeat="request in ctrl.requests">
-                    {{ request._touser.username }} accepted your trade for 
+                    {{ request._touser.name }} accepted your trade for 
                     <img class="align-bottom" ng-src="{{ request._to_book.cover_small }}" /> with 
                     <img class="align-bottom" ng-src="{{ request._from_book.cover_small }}"/>   
                 </div>

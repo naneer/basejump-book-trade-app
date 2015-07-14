@@ -8,7 +8,7 @@ exports.index = function(req, res) {
   Book.find()
       .skip(req.query.offset)
       .limit(15)
-      .populate('_owner', 'username')
+      .populate('_owner', 'name')
       .exec(function (err, books) {
         if(err) { return handleError(res, err); }
         return res.json(200, books);
@@ -18,7 +18,7 @@ exports.index = function(req, res) {
 // Get list of logged in User books
 exports.mybooks = function(req, res) {
   Book.find({ _owner: req.user._id })
-      .populate('_owner', 'username')
+      .populate('_owner', 'name')
       .exec(function (err, books) {
         if(err) { return handleError(res, err); }
         return res.json(200, books);

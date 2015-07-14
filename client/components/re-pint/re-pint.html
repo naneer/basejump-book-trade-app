@@ -8,7 +8,7 @@
             <div class="hidden-xs caption">
                 <h4>{{ book.title }}</h4>
                 <div ng-if="pint.state === 'stacks.all'">
-                    <h4 ng-if="book._owner._id !== pint.currentUserId"><small>{{ book._owner.username }}'s copy</small></h4>
+                    <h4 ng-if="book._owner._id !== pint.currentUserId"><small>{{ book._owner.name }}'s copy</small></h4>
                     <h4 ng-if="book._owner._id === pint.currentUserId"><small>your copy</small></h4>
                 </div>
             </div>            

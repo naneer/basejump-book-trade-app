@@ -23,3 +23,13 @@ img.bookimg {
 img.bookimg:hover {
     filter: brightness(88%);
 }
+
+@media (max-width: 600px){
+    .grid-sizer {
+        width: 50%;
+    }
+    .grid-item {
+        width: 50%;
+        padding: .6%;
+    }
+}
