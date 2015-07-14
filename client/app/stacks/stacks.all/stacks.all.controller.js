@@ -7,7 +7,7 @@ angular.module('workspaceApp')
     
     ctrl.load = function(){
       console.log("load");
-      var query = Book.query({ offset: ctrl.books.length - 1 }).$promise;
+      var query = Book.query({ offset: ctrl.books.length }).$promise;
       query.then(function(result){
         for(var i = 0; i < result.length; i++){
           ctrl.books.push(result[i]);
