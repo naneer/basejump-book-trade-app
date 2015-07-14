@@ -6,6 +6,8 @@ angular.module('workspaceApp')
 
     $scope.currentCity = Auth.getCurrentUser().city;
     $scope.currentState = Auth.getCurrentUser().state;
+    $scope.currentFirstName = Auth.getCurrentUser().firstname;
+    $scope.currentLastName = Auth.getCurrentUser().lastname;
     
     $scope.changePassword = function(form) {
       $scope.submitted = true;
@@ -33,6 +35,21 @@ angular.module('workspaceApp')
 		      $scope.currentState = $scope.newState;
 		    }, function(err){
 		      $scope.settingsmessage = err;
+		    });
+		  }
+		};
+	
+		$scope.updateNameInfo = function(form){
+		  if(form.$valid){
+		    User.update({ id: Auth.getCurrentUser()._id }, { 
+		      city: $scope.newFirstName,
+		      state: $scope.newLastName
+		    }, function(user){
+		      $scope.settingsmessage = 'Full Name successfully changed.';
+		      $scope.currentFirstName = $scope.newFirstName;
+		      $scope.currentLastName = $scope.newLastName;
+		    }, function(err){
+		      $scope.namemessage = err;
 		    });
 		  }
 		}
