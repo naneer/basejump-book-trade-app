@@ -51,8 +51,18 @@ angular.module('workspaceApp')
                 function(Book){
                   return Book.mybooks().$promise;
                 }
-              ]
+              ],
+              reqBook: function(){
+                  return modalctrl.book;
+              }
             }
+          });
+          modalInstance.result.then(function(result){
+             if(result === 'trade success'){
+                 $timeout(function(){
+                    $modalInstance.close('close');
+                 }, 180);
+             } 
           });
         }        
     }

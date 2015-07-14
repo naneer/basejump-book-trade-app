@@ -1,0 +1,61 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Your Pending Offers</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="offer in ctrl.offers">
+                    {{ offer._fromuser.username }} wants to trade you for 
+                    <img class="align-bottom" ng-src="{{ offer._to_book.cover_small }}" /> with 
+                    <img class="align-bottom" ng-src="{{ offer._from_book.cover_small }}"/>
+                    <div class="pull-right" ng-if="offer.active">
+                        <button type="button" class="btn btn-success btn-sm" ng-click="ctrl.accept(offer, $index, $event)">Accept</button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="ctrl.decline(offer, $index, $event)">Decline</button>                    
+                    </div>
+                    <div class="pull-right" ng-if="!offer.active">
+                        <h5 ng-if="offer.accepted"><small style="color: green;">You accepted the trade</small></h5>
+                        <h5 ng-if="!offer.accepted"><small style="color: red;">You declined the trade</small></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Your Pending Requests</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="list-group">
+                <div class="list-group-item" ng-if="request.active" ng-repeat="request in ctrl.requests">
+                    You want to trade with {{ request._touser.username }}, for 
+                    <img class="align-bottom" ng-src="{{ request._to_book.cover_small }}" /> with 
+                    <img class="align-bottom" ng-src="{{ request._from_book.cover_small }}"/>   
+                    <button type="button" class="pull-right btn btn-warning btn-sm" ng-click="ctrl.cancel(request, $index, $event)">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Recent Accepted Trades</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="list-group">
+                <div class="list-group-item" ng-if="!request.active && request.accepted" ng-repeat="request in ctrl.requests">
+                    {{ request._touser.username }} accepted your trade for 
+                    <img class="align-bottom" ng-src="{{ request._to_book.cover_small }}" /> with 
+                    <img class="align-bottom" ng-src="{{ request._from_book.cover_small }}"/>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

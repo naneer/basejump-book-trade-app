@@ -20,8 +20,9 @@ angular.module('workspaceApp')
           columnWidth: '.grid-sizer',
           itemSelector: '.grid-item'
         });
-        scope.$watch('pint.books', function(n, o) {
+        scope.$watchCollection('pint.books', function(n, o) {
           if(n === undefined) { return; }
+
           msnry.layout();
           var imgLd = imagesLoaded(grid);
           imgLd.on('progress', function(instance, image){

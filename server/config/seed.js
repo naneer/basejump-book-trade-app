@@ -17,6 +17,13 @@ User.find({}).remove(function() {
     password: 'test'
   }, {
     provider: 'local',
+    username: 'dauntless',
+    firstname: 'Daunt',
+    lastname: 'Less',
+    email: 'daunt@test.com',
+    password: 'test'
+  }, {
+    provider: 'local',
     username: 'admin',
     role: 'admin',
     firstname: 'Admin',

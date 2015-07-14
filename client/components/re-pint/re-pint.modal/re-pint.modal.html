@@ -11,10 +11,10 @@
     </div>
     <div class="modal-header" ng-if="modalctrl.requestTrade">
         <button type="button" class="btn btn-info" ng-click="modalctrl.requestTrade()"><i class="fa fa-share"></i> Request A Trade</button>
-        <h5>{{ modalctrl.book._owner.username }}'s copy</h5>
+        <h4><small>{{ modalctrl.book._owner.username }}'s copy</small></h4>
     </div>
     <div class="modal-body">
-        <img ng-src="{{ modalctrl.book.cover }}" />           
+        <img class="modal-img" ng-src="{{ modalctrl.book.cover }}" />           
         <h3>{{ modalctrl.book.title }}</h3>
         <h4 ng-if="modalctrl.book.authorlist">
             by {{ modalctrl.book.authorlist.join(", ") }}

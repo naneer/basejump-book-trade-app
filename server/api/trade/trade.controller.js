@@ -11,6 +11,32 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of logged in User requests
+exports.myrequests = function(req, res) {
+  Trade.find({ _fromuser: req.user._id })
+      .sort('-created_at')
+      .limit(10)
+      .populate('_touser', 'username')
+      .populate('_to_book _from_book')
+      .exec(function (err, requests) {
+        if(err) { return handleError(res, err); }
+        return res.json(200, requests);
+      });
+};
+
+// Get list of logged in User offers
+exports.myoffers = function(req, res) {
+  Trade.find({ _touser: req.user._id })
+       .sort('-created_at')
+       .limit(5)
+       .populate('_fromuser', 'username')
+       .populate('_to_book _from_book')
+       .exec(function (err, offers) {
+         if(err) { return handleError(res, err); }
+         return res.json(200, offers);
+       })
+};
+
 // Get a single trade
 exports.show = function(req, res) {
   Trade.findById(req.params.id, function (err, trade) {
@@ -22,6 +48,7 @@ exports.show = function(req, res) {
 
 // Creates a new trade in the DB.
 exports.create = function(req, res) {
+  req.body._fromuser = req.user._id;
   Trade.create(req.body, function(err, trade) {
     if(err) { return handleError(res, err); }
     return res.json(201, trade);

@@ -4,17 +4,21 @@
         </div>
         <div class="modal-body">
             <div class="media" ng-repeat="book in tradectrl.mybooks">
-                <div class="pull-left">
+                <div class="media-left">
                     <img class="media-object" ng-src="{{ book.cover_small }}" />
                 </div>
                 <div class="media-body">
                     <h4>{{ book.title }}</h4>
                     <span ng-if="book.authorlist">by {{ book.authorlist.join(", ") }}</span>                    
                 </div>
+                <div class="media-right">
+                    <button type="button" ng-disabled="tradectrl.disable" class="btn btn-info" ng-click="tradectrl.trade(book, $event)">
+                        <i class="fa fa-exchange"></i> Send Request
+                    </button>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            <button class="btn btn-warning" ng-click="tradectrl.cancel()">Cancel</button>
         </div>
 </div>

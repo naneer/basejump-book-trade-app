@@ -6,6 +6,8 @@ var Book = require('./book.model');
 // Get list of books
 exports.index = function(req, res) {
   Book.find()
+      .skip(req.query.offset)
+      .limit(15)
       .populate('_owner', 'username')
       .exec(function (err, books) {
         if(err) { return handleError(res, err); }
