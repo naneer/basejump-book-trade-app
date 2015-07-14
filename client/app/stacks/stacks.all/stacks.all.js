@@ -8,6 +8,7 @@ angular.module('workspaceApp')
         templateUrl: 'app/stacks/stacks.all/stacks.all.html',
         controller: 'StacksAllCtrl',
         controllerAs: 'ctrl',
+        authenticate: true,
         resolve: {
           stack: [
             'Book',
